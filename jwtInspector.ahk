@@ -8,7 +8,7 @@
 
 formatSeconds(secs) {
     time := 19990101  ; *Midnight* of an arbitrary date.
-    time += secs, seconds
+    time += secs, Seconds
     FormatTime, mmss, %time%, mm:ss
     return Abs(secs) > 3600 ? secs//3600 ":" mmss : mmss
 }
@@ -19,9 +19,7 @@ calculateExp(expTimestamp) {
     return expTimestamp - utcTimestamp
 }
 
-CustomMsgBox(Title,Message,Font="",FontOptions="",WindowColor="")
-{
-
+customMsgBox(Title,Message,Font="",FontOptions="",WindowColor="") {
     Gui,66:Destroy
     Gui,66:Color,%WindowColor%
     Gui,66:Font,%FontOptions%,%Font%
