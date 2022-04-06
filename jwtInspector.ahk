@@ -44,5 +44,5 @@ jwtBodyObj := JSON.Load(jwtBodyDecoded)
 expTimestamp := jwtBodyObj["exp"]
 expiresIn := calculateExp(expTimestamp)
 jwtBodyFormatted := JSON.Dump(jwtBodyObj,, 4)
-CustomMsgBox("JWT Inspector - Token expires in: " formatSeconds(expiresIn), jwtBodyFormatted)
+customMsgBox("JWT Inspector - Token expires in: " formatSeconds(expiresIn), jwtBodyFormatted)
 return
