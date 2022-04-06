@@ -19,17 +19,17 @@ calculateExp(expTimestamp) {
     return expTimestamp - utcTimestamp
 }
 
-customMsgBox(Title,Message,Font="",FontOptions="",WindowColor="") {
+customMsgBox(Title,Message,Font="",FontOptions="s12",WindowColor="") {
     Gui,66:Destroy
     Gui,66:Color,%WindowColor%
     Gui,66:Font,%FontOptions%,%Font%
-    Gui,66:Add,Edit,,%Message%
+    Gui,66:Add,Edit,% "h"A_ScreenHeight/2,%Message%
     Gui,66:Font    
-    Gui,66:Add,Button,% "Default y+10 w75 g66OK xp+" (TextW / 2) - 38 ,OK
+    Gui,66:Add,Button,% "Default y+10 w75 g66OK xp+" (EditW / 2) - 38 ,OK
     Gui,66:-MinimizeBox
     Gui,66:-MaximizeBox
     Gui,66:Show,,%Title%
-    ControlSend,,{End},%Title%
+    ControlSend,,{Left},%Title%
     return
     GuiClose:
     GuiEscape:
@@ -44,5 +44,5 @@ jwtBodyObj := JSON.Load(jwtBodyDecoded)
 expTimestamp := jwtBodyObj["exp"]
 expiresIn := calculateExp(expTimestamp)
 jwtBodyFormatted := JSON.Dump(jwtBodyObj,, 4)
-customMsgBox("JWT Inspector - Token expires in: " formatSeconds(expiresIn), jwtBodyFormatted)
+CustomMsgBox("JWT Inspector - Token expires in: " formatSeconds(expiresIn), jwtBodyFormatted)
 return
