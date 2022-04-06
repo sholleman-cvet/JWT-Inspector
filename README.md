@@ -7,7 +7,7 @@ JWT-Inspector needs following libraries:
 
 https://github.com/cocobelgica/AutoHotkey-JSON  
 https://github.com/jNizM/AHK_Scripts/blob/master/src/encoding_decoding/base64.ahk  
-
+(Remove the last 2 lines from base64.ahk)  
 Copy them into a [function library folder](https://www.autohotkey.com/docs/Functions.htm#lib).  
 
 ## How it works
