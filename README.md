@@ -1,1 +1,14 @@
-# JWT-Inspector
+# JWT-Inspector  
+
+Displays decoded JWT that you have copied to the clipboard and the time until the token is expired.  
+
+## Dependencies
+JWT-Inspector needs following libraries:  
+
+https://github.com/cocobelgica/AutoHotkey-JSON  
+https://github.com/jNizM/AHK_Scripts/blob/master/src/encoding_decoding/base64.ahk  
+
+Copy them into a [function library folder](https://www.autohotkey.com/docs/Functions.htm#lib).  
+
+## How it works
+With a JWT copied to the clipboard, press Alt + 0 to display the decoded JWT. The time until expiration is shown in the title of the GUI. 
