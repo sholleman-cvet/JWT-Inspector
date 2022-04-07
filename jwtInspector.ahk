@@ -6,15 +6,19 @@
 #Include <JSON> 
 #Include <Base64>
 
-CustomMsgBox(Title,Exp,Message) {
+EpochTimestamp() {
+    now := A_NowUTC ;UTC timestamp in YYYYMMDDHH24MISS format
+    EnvSub, now, 19700101, Seconds ;subtract seconds since 1970/01/01
+    return now
+}
+
+CustomMsgBox(TitleStr, EditStr, TextStr) {
     Gui,New
-    Gui,-MinimizeBox
-    Gui,-MaximizeBox
     Gui,Font,s12,%Font%
-    Gui,Add,Edit,% "h"A_ScreenHeight*.80 ReadOnly,%Message%
-    Gui,Add,Text, ,% "Token expires in: " Exp " seconds."
-    Gui,Show,,%Title%
-    ControlSend,,{Left},%Title% ;deselects the text
+    Gui,Add,Edit,% "h"A_ScreenHeight*.60 ReadOnly,%EditStr%
+    Gui,Add,Text,,%TextStr%
+    Gui,Show,,%TitleStr%
+    ControlSend,,{Left},%TitleStr% ;deselects the text
     return
     GuiClose:
     GuiEscape:
@@ -24,10 +28,7 @@ CustomMsgBox(Title,Exp,Message) {
 
 !0:: 
 jwtBodyObj := JSON.Load(b64Decode(StrSplit(Clipboard, ".")[2]))
-utcTimestamp := A_NowUTC
-EnvSub, utcTimestamp, 19700101, Seconds
-expiresIn := jwtBodyObj.exp - utcTimestamp
-jwtBody := JSON.Dump(jwtBodyObj,, 4)
-title := "JWT Inspector" 
-CustomMsgBox(title,expiresIn,jwtBody)
+jwtBodyBeautified := JSON.Dump(jwtBodyObj,,2)
+secondsUntilExp := jwtBodyObj.exp - EpochTimestamp()
+CustomMsgBox("JWT Inspector", jwtBodyBeautified, "Expires in: " secondsUntilExp " seconds.")
 return
