@@ -11,4 +11,4 @@ https://github.com/jNizM/AHK_Scripts/blob/master/src/encoding_decoding/base64.ah
 Copy them into a [function library folder](https://www.autohotkey.com/docs/Functions.htm#lib).  
 
 ## How it works
-With a JWT copied to the clipboard, press Alt + 0 to display the decoded JWT. The time until expiration is shown in the title of the GUI. 
+With a JWT copied to the clipboard, press Alt + 0 to display the decoded JWT. 
