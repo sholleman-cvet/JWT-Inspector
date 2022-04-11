@@ -12,3 +12,5 @@ Copy them into a [function library folder](https://www.autohotkey.com/docs/Funct
 
 ## How it works
 With a JWT copied to the clipboard, press Alt + 0 to display the decoded JWT. 
+
+![JWT Inspector](https://i.imgur.com/Ra1LkFS.png)
